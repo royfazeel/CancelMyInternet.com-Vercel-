@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Internet & Cable TV Service | CancelMyInternet.com</title>
+    <meta name="description" content="Independent third-party service helping you cancel your internet or cable TV service over the phone.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --bg-card: rgba(255,255,255,0.03);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+            --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(6,182,212,0.4) 0%, rgba(139,92,246,0.4) 100%);
+            --border-color: rgba(255,255,255,0.08);
+            --glass-bg: rgba(255,255,255,0.05);
+            --glass-border: rgba(255,255,255,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Noise Overlay */
+        .noise {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(10,10,15,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .nav {
+                display: flex;
+                gap: 32px;
+            }
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--text-primary);
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139,92,246,0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s infinite;
+        }
+
+        .hero-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(6,182,212,0.15);
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(139,92,246,0.15);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -10s;
+        }
+
+        .hero-orb-3 {
+            width: 300px;
+            height: 300px;
+            background: rgba(236,72,153,0.1);
+            top: 50%;
+            left: 50%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(139,92,246,0.4);
+        }
+
+        .btn-glass {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(6,182,212,0.2) 0%, rgba(139,92,246,0.2) 100%);
+            z-index: 1;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: bounce 3s infinite;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-card-1 {
+            bottom: -30px;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            top: 20px;
+            right: -20px;
+            animation-delay: -1s;
+        }
+
+        .floating-card-3 {
+            bottom: 80px;
+            right: -40px;
+            animation-delay: -2s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .card-icon.success { background: rgba(16,185,129,0.2); color: var(--accent-green); }
+        .card-icon.celebrate { background: rgba(236,72,153,0.2); }
+        .card-icon.money { background: rgba(249,115,22,0.2); }
+
+        .card-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .tag-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* Providers Section */
+        .providers-section {
+            background: var(--bg-secondary);
+        }
+
+        .provider-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .provider-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            text-decoration: none;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .provider-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .provider-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .provider-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139,92,246,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .provider-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .provider-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .provider-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .provider-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .provider-action {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            position: relative;
+            z-index: 1;
+        }
+
+        .provider-disclaimer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Steps Section */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .step-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--accent-purple);
+            background: rgba(139,92,246,0.05);
+        }
+
+        .step-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 64px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .step-image {
+            width: 100%;
+            height: 160px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .step-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features-section {
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+        }
+
+        .feature-card.do-card {
+            border-color: rgba(16,185,129,0.3);
+        }
+
+        .feature-card.dont-card {
+            border-color: rgba(239,68,68,0.3);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon.do {
+            background: rgba(16,185,129,0.15);
+            color: var(--accent-green);
+        }
+
+        .feature-icon.dont {
+            background: rgba(239,68,68,0.15);
+            color: #ef4444;
+        }
+
+        .feature-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .feature-list .check {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .feature-list .cross {
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .pricing-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-purple);
+            background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(6,182,212,0.1) 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pricing-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            margin-bottom: 16px;
+        }
+
+        .price .currency {
+            font-size: 24px;
+            color: var(--text-muted);
+            vertical-align: top;
+        }
+
+        .price .amount {
+            font-family: 'Outfit', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price .cents {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+
+        .pricing-card > p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-secondary);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .faq-icon span {
+            position: absolute;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            transition: transform 0.3s;
+        }
+
+        .faq-icon span:first-child {
+            width: 14px;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon span:last-child {
+            width: 2px;
+            height: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-item.open .faq-icon span:last-child {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 24px 24px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Trust Section */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .trust-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .trust-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+        }
+
+        .trust-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .trust-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trust-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.1) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient-glow);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(100px);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-section > .container > p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .cta-note {
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 16px;
+            max-width: 280px;
+        }
+
+        .footer-links h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-disclaimer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-toggle {
+                display: none;
+            }
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .hero-visual {
+                display: none;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">✕</div>
+                    <span class="logo-text">Cancel<span>My</span>Internet</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <a href="tel:+18885550199" class="header-cta">
+                    📞 Call Now
+                </a>
+                <button class="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
+                <div class="hero-orb hero-orb-3"></div>
+                <div class="hero-grid"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge animate-fade-in">
+                            <span class="badge-dot"></span>
+                            Independent Third-Party Service
+                        </div>
+                        <h1 class="hero-title animate-fade-in-up">
+                            Cancel Internet & Cable TV
+                            <span class="gradient-text">Without the Headache</span>
+                        </h1>
+                        <p class="hero-subtitle animate-fade-in-up delay-1">
+                            We're an independent service that guides you through the cancellation call. 
+                            No affiliation with any provider. Clear pricing. Real human assistance.
+                        </p>
+                        <div class="hero-buttons animate-fade-in-up delay-2">
+                            <a href="tel:+18885550199" class="btn btn-primary">
+                                📞 Call For Assistance
+                            </a>
+                            <a href="how-it-works.html" class="btn btn-glass">
+                                See How It Works →
+                            </a>
+                        </div>
+                        <div class="hero-stats animate-fade-in-up delay-3">
+                            <div class="stat">
+                                <div class="stat-value">4</div>
+                                <div class="stat-label">Major Providers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">50</div>
+                                <div class="stat-label">States Covered</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">🇺🇸</div>
+                                <div class="stat-label">USA Only</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=600&h=400&fit=crop&q=80" alt="Customer service">
+                        </div>
+                        <div class="floating-card floating-card-1">
+                            <div class="card-icon success">✓</div>
+                            <span class="card-text">Cancellation Confirmed!</span>
+                        </div>
+                        <div class="floating-card floating-card-2">
+                            <div class="card-icon celebrate">🎉</div>
+                            <span class="card-text">You're Free!</span>
+                        </div>
+                        <div class="floating-card floating-card-3">
+                            <div class="card-icon money">💰</div>
+                            <span class="card-text">Saving $120/mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Providers Section -->
+        <section class="providers-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><span class="tag-dot"></span>Supported Providers</span>
+                    <h2 class="section-title">Select Your <span class="gradient-text">Provider</span></h2>
+                    <p class="section-subtitle">We assist with cancellations for major internet and cable TV providers across the United States</p>
+                </div>
+                <div class="provider-grid">
+                    <a href="cancel-verizon.html" class="provider-card">
+                        <div class="provider-icon">
+                            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=120&h=120&fit=crop&q=80" alt="Fiber optic">
+                        </div>
+                        <h3>Verizon</h3>
+                        <p>Fios Internet & TV</p>
+                        <div class="provider-action">Cancel Verizon →</div>
+                    </a>
+                    <a href="cancel-spectrum.html" class="provider-card">
+                        <div class="provider-icon">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="Cable">
+                        </div>
+                        <h3>Spectrum</h3>
+                        <p>Internet & Cable TV</p>
+                        <div class="provider-action">Cancel Spectrum →</div>
+                    </a>
+                    <a href="cancel-optimum.html" class="provider-card">
+                        <div class="provider-icon">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&h=120&fit=crop&q=80" alt="Network">
+                        </div>
+                        <h3>Optimum</h3>
+                        <p>Internet & Cable TV</p>
+                        <div class="provider-action">Cancel Optimum →</div>
+                    </a>
+                    <a href="cancel-att.html" class="provider-card">
+                        <div class="provider-icon">
+                            <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?w=120&h=120&fit=crop&q=80" alt="Tower">
+                        </div>
+                        <h3>AT&T</h3>
+                        <p>Internet & U-verse TV</p>
+                        <div class="provider-action">Cancel AT&T →</div>
+                    </a>
+                </div>
+                <p class="provider-disclaimer">
+                    ⓘ Not affiliated with, endorsed by, or associated with any provider listed above.
+                </p>
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><span class="tag-dot"></span>Simple Process</span>
+                    <h2 class="section-title">How It <span class="gradient-text">Works</span></h2>
+                    <p class="section-subtitle">Three simple steps to get phone-based cancellation assistance</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <div class="step-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop&q=80" alt="Choose provider">
+                        </div>
+                        <h3>Choose Your Provider</h3>
+                        <p>Select the internet or cable TV provider you want to cancel and review pricing.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <div class="step-image">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=200&fit=crop&q=80" alt="Call support">
+                        </div>
+                        <h3>Call Our Support Line</h3>
+                        <p>Speak with our team who will guide you and help prepare your account information.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <div class="step-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop&q=80" alt="Complete">
+                        </div>
+                        <h3>Complete Cancellation</h3>
+                        <p>We'll assist you through the call with scripts and a checklist to confirm all steps.</p>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:40px;">
+                    <a href="how-it-works.html" class="btn btn-glass">Learn More About Our Process →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><span class="tag-dot"></span>Transparency</span>
+                    <h2 class="section-title">What We <span class="gradient-text">Do & Don't</span></h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card do-card">
+                        <div class="feature-header">
+                            <div class="feature-icon do">✓</div>
+                            <h3>What We Do</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li><span class="check">✓</span> Phone-based guidance through cancellation</li>
+                            <li><span class="check">✓</span> Help prepare what to say</li>
+                            <li><span class="check">✓</span> Explain typical provider policies</li>
+                            <li><span class="check">✓</span> Confirmation checklist</li>
+                            <li><span class="check">✓</span> Answer process questions</li>
+                            <li><span class="check">✓</span> Transparent pricing upfront</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card dont-card">
+                        <div class="feature-header">
+                            <div class="feature-icon dont">✗</div>
+                            <h3>What We Don't Do</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li><span class="cross">✗</span> Guarantee cancellation outcomes</li>
+                            <li><span class="cross">✗</span> Have special provider access</li>
+                            <li><span class="cross">✗</span> Cancel on your behalf</li>
+                            <li><span class="cross">✗</span> Handle equipment returns</li>
+                            <li><span class="cross">✗</span> Affiliate with providers</li>
+                            <li><span class="cross">✗</span> Promise about contract fees</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><span class="tag-dot"></span>Transparent</span>
+                    <h2 class="section-title">Simple <span class="gradient-text">Pricing</span></h2>
+                    <p class="section-subtitle">No hidden fees. Know exactly what you'll pay.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Internet Only</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">29</span>
+                            <span class="cents">.99</span>
+                        </div>
+                        <p>Cancellation assistance for internet service</p>
+                        <ul class="pricing-features">
+                            <li>✓ Full consultation call</li>
+                            <li>✓ Preparation guidance</li>
+                            <li>✓ Scripts & checklists</li>
+                            <li>✓ Email follow-up</li>
+                        </ul>
+                        <a href="tel:+18885550199" class="btn btn-glass btn-block">Get Started</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <h3>Bundle Deal</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">39</span>
+                            <span class="cents">.99</span>
+                        </div>
+                        <p>Internet AND cable TV cancellation</p>
+                        <ul class="pricing-features">
+                            <li>✓ Everything in single service</li>
+                            <li>✓ Handle both at once</li>
+                            <li>✓ Save $20 vs separate</li>
+                            <li>✓ Priority support</li>
+                        </ul>
+                        <a href="tel:+18885550199" class="btn btn-primary btn-block">Get Started</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Cable TV Only</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">29</span>
+                            <span class="cents">.99</span>
+                        </div>
+                        <p>Cancellation assistance for cable TV</p>
+                        <ul class="pricing-features">
+                            <li>✓ Full consultation call</li>
+                            <li>✓ Preparation guidance</li>
+                            <li>✓ Scripts & checklists</li>
+                            <li>✓ Email follow-up</li>
+                        </ul>
+                        <a href="tel:+18885550199" class="btn btn-glass btn-block">Get Started</a>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:40px;">
+                    <a href="pricing.html" class="btn btn-glass">View Refund Policy</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><span class="tag-dot"></span>Questions</span>
+                    <h2 class="section-title">Frequently <span class="gradient-text">Asked</span></h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is CancelMyInternet.com affiliated with any provider?</span>
+                            <div class="faq-icon"><span></span><span></span></div>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>No.</strong> We are an independent third-party service. Not affiliated with, endorsed by, or associated with any provider.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What does your service include?</span>
+                            <div class="faq-icon"><span></span><span></span></div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Phone-based guidance, help preparing what to say, understanding provider policies, and a confirmation checklist.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How much does it cost?</span>
+                            <div class="faq-icon"><span></span><span></span></div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>$29.99 to $39.99 depending on service. Fee displayed before you proceed, no hidden charges.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can you guarantee cancellation?</span>
+                            <div class="faq-icon"><span></span><span></span></div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We cannot guarantee outcomes as final decisions rest with your provider. We provide expert assistance.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What information do I need?</span>
+                            <div class="faq-icon"><span></span><span></span></div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Account number, name on account, service address, and identity verification like PIN or last 4 of SSN.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is your refund policy?</span>
+                            <div class="faq-icon"><span></span><span></span></div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>If we're unable to assist as described, you may be eligible for a refund. See full policy for details.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:40px;">
+                    <a href="faq.html" class="btn btn-glass">View All FAQs</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><span class="tag-dot"></span>Why Choose Us</span>
+                    <h2 class="section-title">Trust & <span class="gradient-text">Safety</span></h2>
+                </div>
+                <div class="trust-grid">
+                    <div class="trust-card">
+                        <div class="trust-icon">🔒</div>
+                        <h3>Privacy Protected</h3>
+                        <p>Your info is secure and never sold to third parties.</p>
+                    </div>
+                    <div class="trust-card">
+                        <div class="trust-icon">📋</div>
+                        <h3>Clear Terms</h3>
+                        <p>No fine print. Plain language policies.</p>
+                    </div>
+                    <div class="trust-card">
+                        <div class="trust-icon">🛡️</div>
+                        <h3>Independent</h3>
+                        <p>No provider affiliations. We work for you.</p>
+                    </div>
+                    <div class="trust-card">
+                        <div class="trust-icon">💬</div>
+                        <h3>Real Support</h3>
+                        <p>Actual humans during business hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Cancel Your Service?</h2>
+                    <p>Get phone-based assistance from our independent team. Clear pricing, no hidden fees.</p>
+                    <a href="tel:+18885550199" class="btn btn-primary" style="font-size:18px;padding:20px 40px;">
+                        📞 Call Now: 1-888-555-0199
+                    </a>
+                    <p class="cta-note">Independent third-party service. Not affiliated with any provider.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">✕</div>
+                        <span class="logo-text">Cancel<span>My</span>Internet</span>
+                    </a>
+                    <p>Independent third-party phone assistance for canceling internet and cable TV services in the United States.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Providers</h4>
+                    <ul>
+                        <li><a href="cancel-verizon.html">Cancel Verizon</a></li>
+                        <li><a href="cancel-spectrum.html">Cancel Spectrum</a></li>
+                        <li><a href="cancel-optimum.html">Cancel Optimum</a></li>
+                        <li><a href="cancel-att.html">Cancel AT&T</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 CancelMyInternet.com. All rights reserved.</p>
+                <p class="footer-disclaimer">ⓘ Independent third-party service. Not affiliated with any provider.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isOpen = item.classList.contains('open');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                
+                // Toggle current
+                if (!isOpen) {
+                    item.classList.add('open');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10,10,15,0.95)';
+            } else {
+                header.style.background = 'rgba(10,10,15,0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
