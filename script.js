@@ -1,55 +1,32 @@
-// CancelMyInternet.com - Enhanced Interactive JavaScript
+// CancelMyInternet.com - Clean Business Theme JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Cursor Glow Effect
-    const cursorGlow = document.createElement('div');
-    cursorGlow.className = 'cursor-glow';
-    document.body.appendChild(cursorGlow);
-    
-    let mouseX = 0, mouseY = 0;
-    let glowX = 0, glowY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    
-    function animateCursor() {
-        glowX += (mouseX - glowX) * 0.1;
-        glowY += (mouseY - glowY) * 0.1;
-        cursorGlow.style.left = glowX + 'px';
-        cursorGlow.style.top = glowY + 'px';
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
     // Header Scroll Effect
     const header = document.querySelector('.header');
-    let lastScroll = 0;
-    
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 50) {
+        if (window.pageYOffset > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-        
-        lastScroll = currentScroll;
     });
 
-    // Mobile Menu Toggle
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    
-    if (mobileToggle && mobileNav) {
-        mobileToggle.addEventListener('click', () => {
-            mobileNav.classList.toggle('open');
-            mobileToggle.classList.toggle('active');
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            }
         });
-    }
+    });
 
     // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(button => {
@@ -57,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const item = button.parentElement;
             const isOpen = item.classList.contains('open');
             
-            // Close all others with animation
+            // Close all others
             document.querySelectorAll('.faq-item').forEach(i => {
                 i.classList.remove('open');
             });
@@ -69,112 +46,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Intersection Observer for Animations
+    // Floating Contact Form
+    const floatingBtn = document.querySelector('.floating-btn');
+    const floatingForm = document.querySelector('.floating-form');
+    
+    if (floatingBtn && floatingForm) {
+        floatingBtn.addEventListener('click', () => {
+            floatingForm.classList.toggle('active');
+        });
+        
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!floatingBtn.contains(e.target) && !floatingForm.contains(e.target)) {
+                floatingForm.classList.remove('active');
+            }
+        });
+    }
+
+    // Intersection Observer for Fade-in Animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const animateOnScroll = new IntersectionObserver((entries) => {
+    const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
-                    entry.target.classList.add('animate-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }, index * 100);
-                animateOnScroll.unobserve(entry.target);
+                fadeObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe elements
-    document.querySelectorAll('.card, .provider-card, .pricing-card, .trust-card, .faq-item, .step-card').forEach(el => {
+    // Apply to elements
+    document.querySelectorAll('.step-card, .testimonial-card, .pricing-card, .card, .faq-item').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(40px)';
-        animateOnScroll.observe(el);
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        fadeObserver.observe(el);
     });
-
-    // Smooth Scroll for Anchor Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
-    });
-
-    // Parallax Effect for Orbs
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        document.querySelectorAll('.orb').forEach((orb, index) => {
-            const speed = 0.1 + (index * 0.05);
-            orb.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-
-    // Button Ripple Effect
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}px;
-                top: ${y}px;
-                background: rgba(255,255,255,0.3);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-                pointer-events: none;
-            `;
-            
-            this.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-        });
-    });
-
-    // Add ripple animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ripple {
-            to { transform: scale(4); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Typing Effect for Hero Title (if exists)
-    const heroTitle = document.querySelector('.hero-title .typing-text');
-    if (heroTitle) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        typeWriter();
-    }
 
     // Counter Animation
-    const counters = document.querySelectorAll('.stat-value[data-count]');
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const target = +entry.target.getAttribute('data-count');
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-count'));
                 const duration = 2000;
                 const step = target / (duration / 16);
                 let current = 0;
@@ -182,130 +102,235 @@ document.addEventListener('DOMContentLoaded', function() {
                 const updateCounter = () => {
                     current += step;
                     if (current < target) {
-                        entry.target.textContent = Math.floor(current);
+                        counter.textContent = Math.floor(current).toLocaleString() + '+';
                         requestAnimationFrame(updateCounter);
                     } else {
-                        entry.target.textContent = target;
+                        counter.textContent = target.toLocaleString() + '+';
                     }
                 };
                 updateCounter();
-                counterObserver.unobserve(entry.target);
+                counterObserver.unobserve(counter);
             }
         });
     }, { threshold: 0.5 });
 
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    // Magnetic Buttons
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-        btn.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
+    document.querySelectorAll('[data-count]').forEach(counter => {
+        counterObserver.observe(counter);
     });
 
-    // Form Validation
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    // Form Submission
+    const contactForms = document.querySelectorAll('form');
+    contactForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = this.querySelector('[name="name"]').value.trim();
-            const email = this.querySelector('[name="email"]').value.trim();
-            const message = this.querySelector('[name="message"]').value.trim();
+            // Simple validation
+            const inputs = this.querySelectorAll('input[required], textarea[required]');
+            let valid = true;
             
-            if (!name || !email || !message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    valid = false;
+                    input.style.borderColor = '#ef4444';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+            
+            if (valid) {
+                // Show success message
+                const btn = this.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Message Sent!';
+                btn.style.background = '#16a34a';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    this.reset();
+                    
+                    // Close floating form if applicable
+                    const floatingForm = this.closest('.floating-form');
+                    if (floatingForm) {
+                        floatingForm.classList.remove('active');
+                    }
+                }, 2000);
             }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
+        });
+    });
+
+    // Provider Logo Hover (show popup)
+    document.querySelectorAll('.provider-logo').forEach(logo => {
+        logo.addEventListener('click', () => {
+            const provider = logo.getAttribute('data-provider');
+            if (provider) {
+                showProviderPopup(provider);
             }
+        });
+    });
+
+    // Brand Logo SVGs - Real provider logos
+    const brandLogos = {
+        verizon: `<svg viewBox="0 0 100 40" width="70" height="28">
+            <text x="50" y="28" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#cd040b">verizon</text>
+            <path d="M93 8l-8 24h-4l8-24h4z" fill="#cd040b"/>
+        </svg>`,
+        spectrum: `<svg viewBox="0 0 120 40" width="80" height="28">
+            <text x="60" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0066cc">SPECTRUM</text>
+        </svg>`,
+        xfinity: `<svg viewBox="0 0 100 40" width="70" height="28">
+            <text x="50" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#e31937">xfinity</text>
+        </svg>`,
+        att: `<svg viewBox="0 0 100 50" width="70" height="35">
+            <circle cx="50" cy="25" r="22" fill="none" stroke="#00a8e0" stroke-width="3"/>
+            <path d="M30 25 Q50 10 70 25 Q50 40 30 25" fill="none" stroke="#00a8e0" stroke-width="2"/>
+            <text x="50" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#00a8e0">AT&T</text>
+        </svg>`,
+        optimum: `<svg viewBox="0 0 110 40" width="75" height="28">
+            <text x="55" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#d4930d">optimum</text>
+        </svg>`
+    };
+
+    // Provider info for popup
+    const providerInfo = {
+        verizon: { 
+            name: 'Verizon', 
+            fullName: 'Verizon Fios',
+            tagline: 'Get expert help canceling your Verizon Fios Internet or TV service.',
+            class: 'verizon'
+        },
+        spectrum: { 
+            name: 'Spectrum', 
+            fullName: 'Spectrum',
+            tagline: 'Navigate your Spectrum cancellation with our expert phone guidance.',
+            class: 'spectrum'
+        },
+        xfinity: { 
+            name: 'Xfinity', 
+            fullName: 'Xfinity / Comcast',
+            tagline: 'Cancel your Xfinity service hassle-free with our assistance.',
+            class: 'xfinity'
+        },
+        att: { 
+            name: 'AT&T', 
+            fullName: 'AT&T Internet & U-verse',
+            tagline: 'Get guidance for canceling your AT&T Internet or U-verse TV.',
+            class: 'att'
+        },
+        optimum: { 
+            name: 'Optimum', 
+            fullName: 'Optimum',
+            tagline: 'Cancel your Optimum service smoothly with our expert help.',
+            class: 'optimum'
+        }
+    };
+
+    // Popup Functions
+    let popupInterval = null;
+    let currentProvider = 'verizon';
+    const providers = ['verizon', 'spectrum', 'xfinity', 'att', 'optimum'];
+    
+    // Start popup cycle on page load
+    function startPopupCycle() {
+        // Show first popup after 2 seconds
+        setTimeout(() => {
+            showProviderPopup(getRandomProvider());
+        }, 2000);
+    }
+    
+    // Get random provider or cycle through them
+    function getRandomProvider() {
+        return providers[Math.floor(Math.random() * providers.length)];
+    }
+
+    window.showProviderPopup = function(provider) {
+        const overlay = document.getElementById('providerPopup');
+        const popup = document.getElementById('popupContent');
+        const logoEl = document.getElementById('popupLogo');
+        const titleEl = document.getElementById('popupTitle');
+        const subtitleEl = document.getElementById('popupSubtitle');
+        
+        if (overlay && popup) {
+            currentProvider = provider || getRandomProvider();
+            const info = providerInfo[currentProvider] || providerInfo.verizon;
+            const logo = brandLogos[currentProvider] || brandLogos.verizon;
             
-            showNotification('Message sent successfully!', 'success');
-            this.reset();
+            // Remove all provider classes and add current one
+            popup.className = 'popup ' + info.class;
+            
+            // Update content
+            if (logoEl) logoEl.innerHTML = logo;
+            if (titleEl) titleEl.textContent = `Cancel ${info.fullName}`;
+            if (subtitleEl) subtitleEl.textContent = info.tagline;
+            
+            // Show popup
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Clear any existing interval
+            if (popupInterval) {
+                clearTimeout(popupInterval);
+            }
+        }
+    };
+
+    window.closePopup = function() {
+        const popup = document.getElementById('providerPopup');
+        if (popup) {
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reshow popup after 4 seconds with a different provider
+            popupInterval = setTimeout(() => {
+                showProviderPopup(getRandomProvider());
+            }, 4000);
+        }
+    };
+    
+    // Start the popup cycle when page loads
+    startPopupCycle();
+
+    // Close popup on overlay click
+    const popupOverlay = document.getElementById('providerPopup');
+    if (popupOverlay) {
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                closePopup();
+            }
         });
     }
 
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    function showNotification(message, type) {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            padding: 16px 24px;
-            background: ${type === 'success' ? 'linear-gradient(135deg, #30d158, #34c759)' : 'linear-gradient(135deg, #ff453a, #ff6961)'};
-            color: white;
-            border-radius: 12px;
-            font-weight: 600;
-            z-index: 10000;
-            animation: slideIn 0.3s ease-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease-in forwards';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-
-    // Add notification animations
-    const notifStyle = document.createElement('style');
-    notifStyle.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(notifStyle);
-
-    // Easter Egg: Konami Code
-    let konamiCode = [];
-    const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    
+    // Close popup on Escape key
     document.addEventListener('keydown', (e) => {
-        konamiCode.push(e.key);
-        konamiCode = konamiCode.slice(-10);
-        
-        if (konamiCode.join('') === konamiPattern.join('')) {
-            document.body.style.animation = 'rainbow 2s linear infinite';
-            setTimeout(() => {
-                document.body.style.animation = '';
-            }, 5000);
+        if (e.key === 'Escape') {
+            const popup = document.getElementById('providerPopup');
+            if (popup && popup.classList.contains('active')) {
+                closePopup();
+            }
+            const floatingForm = document.querySelector('.floating-form');
+            if (floatingForm) {
+                floatingForm.classList.remove('active');
+            }
         }
     });
 
-    // Add rainbow animation
-    const rainbowStyle = document.createElement('style');
-    rainbowStyle.textContent = `
-        @keyframes rainbow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(rainbowStyle);
+    // Mobile Menu (placeholder for future implementation)
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            // Add mobile menu functionality here
+            console.log('Mobile menu clicked');
+        });
+    }
 
-    console.log('%c🚀 CancelMyInternet.com', 'font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #00f5ff, #bf5af2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
-    console.log('%cBuilt with ❤️', 'font-size: 14px; color: #ff2d92;');
+    // Lazy Load Images
+    if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+            img.src = img.dataset.src || img.src;
+        });
+    }
+
+    console.log('%c🚀 CancelMyInternet.com', 'font-size: 20px; font-weight: bold; color: #2563eb;');
+    console.log('%cIndependent Third-Party Service', 'font-size: 12px; color: #6b7280;');
 });
