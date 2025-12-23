@@ -2,21 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cancel Internet & Cable TV Service | CancelMyInternet.com</title>
-    <meta name="description" content="Independent third-party service helping you cancel your internet or cable TV service. Expert phone assistance for Verizon, Spectrum, Optimum & AT&T.">
+    <title>Cancel Your Internet Service in 3 Simple Steps | CancelMyInternet.com</title>
+    <meta name="description" content="We handle the process, you enjoy a hassle-free cancellation. Independent third-party service helping you cancel internet and cable TV.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-animated"></div>
-    <div class="bg-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="noise"></div>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -27,333 +19,310 @@
                 </a>
                 <nav class="nav">
                     <a href="index.html" class="active">Home</a>
-                    <a href="how-it-works.html">How It Works</a>
+                    <a href="#how-it-works">How It Works</a>
                     <a href="pricing.html">Pricing</a>
                     <a href="faq.html">FAQ</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
                 </nav>
                 <a href="tel:+18885240250" class="header-cta">📞 (888) 524-0250</a>
-                <button class="mobile-toggle"><span></span><span></span><span></span></button>
+                <button class="mobile-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faq.html">FAQ</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="tel:+18885240250" class="mobile-cta">📞 (888) 524-0250</a>
+        </nav>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero" style="min-height: 100vh; display: flex; align-items: center; padding-top: 100px;">
+        <section class="hero">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-                    <div>
-                        <div class="section-badge">
-                            Independent Third-Party Service
-                        </div>
-                        <h1 style="font-size: clamp(48px, 7vw, 80px); margin-bottom: 28px; letter-spacing: -3px; line-height: 1;">
-                            Cancel Your
-                            <span class="glow-text">Internet & Cable</span>
-                            Without Stress
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">✓ 10,000+ Successful Cancellations</div>
+                        <h1 class="hero-title">
+                            Cancel Your Internet Service in <span>3 Simple Steps</span>
                         </h1>
-                        <p style="font-size: 20px; color: var(--text-secondary); margin-bottom: 40px; max-width: 500px; line-height: 1.7;">
-                            Expert phone guidance to help you navigate cancellation calls. We prepare you with scripts, tips, and a complete checklist.
+                        <p class="hero-subtitle">
+                            We handle the process, you enjoy a hassle-free cancellation. Expert phone guidance for Verizon, Spectrum, Optimum, AT&T, and more.
                         </p>
-                        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
-                            <a href="tel:+18885240250" class="btn btn-primary btn-lg">
-                                📞 Call For Assistance
+                        <div class="hero-buttons">
+                            <a href="#cancellation-form" class="btn btn-primary btn-lg">
+                                Start Your Cancellation Request →
                             </a>
-                            <a href="how-it-works.html" class="btn btn-outline btn-lg">
-                                See How It Works →
+                            <a href="#how-it-works" class="btn btn-outline btn-lg">
+                                See How It Works
                             </a>
                         </div>
-                        <div style="display: flex; gap: 48px;">
-                            <div>
-                                <div style="font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">4</div>
-                                <div style="color: var(--text-muted); font-size: 14px;">Major Providers</div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="hero-stat-value" data-count="10000">0+</div>
+                                <div class="hero-stat-label">Cancellations</div>
                             </div>
-                            <div>
-                                <div style="font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">50</div>
-                                <div style="color: var(--text-muted); font-size: 14px;">States Covered</div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">4.9★</div>
+                                <div class="hero-stat-label">Customer Rating</div>
                             </div>
-                            <div>
-                                <div style="font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">24/7</div>
-                                <div style="color: var(--text-muted); font-size: 14px;">Support Ready</div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">24hr</div>
+                                <div class="hero-stat-label">Response Time</div>
                             </div>
                         </div>
                     </div>
-                    <div style="position: relative;" class="hero-visual">
-                        <div style="background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-tertiary) 100%); border: 1px solid var(--border-color); border-radius: 32px; padding: 40px; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-main);"></div>
-                            <h3 style="font-size: 24px; margin-bottom: 24px; text-align: center;">Choose Your Provider</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                                <a href="cancel-verizon.html" style="background: rgba(205,4,11,0.1); border: 1px solid rgba(205,4,11,0.3); border-radius: 16px; padding: 24px; text-align: center; text-decoration: none; transition: all 0.3s;">
-                                    <div style="font-size: 32px; margin-bottom: 8px;">📡</div>
-                                    <div style="color: #ff6b6b; font-weight: 600;">Verizon</div>
-                                </a>
-                                <a href="cancel-spectrum.html" style="background: rgba(0,102,204,0.1); border: 1px solid rgba(0,102,204,0.3); border-radius: 16px; padding: 24px; text-align: center; text-decoration: none; transition: all 0.3s;">
-                                    <div style="font-size: 32px; margin-bottom: 8px;">🌐</div>
-                                    <div style="color: #66b3ff; font-weight: 600;">Spectrum</div>
-                                </a>
-                                <a href="cancel-optimum.html" style="background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.3); border-radius: 16px; padding: 24px; text-align: center; text-decoration: none; transition: all 0.3s;">
-                                    <div style="font-size: 32px; margin-bottom: 8px;">⚡</div>
-                                    <div style="color: #ffd966; font-weight: 600;">Optimum</div>
-                                </a>
-                                <a href="cancel-att.html" style="background: rgba(0,168,224,0.1); border: 1px solid rgba(0,168,224,0.3); border-radius: 16px; padding: 24px; text-align: center; text-decoration: none; transition: all 0.3s;">
-                                    <div style="font-size: 32px; margin-bottom: 8px;">📶</div>
-                                    <div style="color: #66d4ff; font-weight: 600;">AT&T</div>
-                                </a>
-                            </div>
-                            <p style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-muted);">
-                                ⓘ Not affiliated with any provider listed
-                            </p>
+                    <div class="hero-image">
+                        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 24px; padding: 40px; text-align: center;">
+                            <div style="font-size: 120px; margin-bottom: 16px;">📞</div>
+                            <h3 style="margin-bottom: 8px;">Expert Phone Assistance</h3>
+                            <p style="color: var(--gray-500);">Real humans ready to help</p>
                         </div>
-                        <!-- Floating Elements -->
-                        <div style="position: absolute; top: -20px; right: -20px; background: var(--gradient-main); padding: 16px 24px; border-radius: 16px; animation: float 3s ease-in-out infinite;">
-                            <span style="font-size: 20px;">✓</span>
-                            <span style="font-weight: 600; color: var(--bg-dark);">Confirmed!</span>
+                        <div class="hero-float-card top-right">
+                            <span style="color: var(--success); font-weight: 700;">✓ Confirmed!</span>
                         </div>
-                        <div style="position: absolute; bottom: 40px; left: -30px; background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px 24px; border-radius: 16px; animation: float 3s ease-in-out infinite; animation-delay: -1.5s;">
-                            <span style="font-size: 20px;">💰</span>
-                            <span style="font-weight: 600;">Save $120/mo</span>
+                        <div class="hero-float-card bottom-left">
+                            <span style="font-weight: 600;">💰 Save $120/mo</span>
                         </div>
                     </div>
-                </div>
-            </div>
-            <style>
-                @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-                @media (max-width: 1024px) {
-                    .hero-visual { display: none !important; }
-                    .hero > .container > div { grid-template-columns: 1fr !important; }
-                }
-            </style>
-        </section>
-
-        <!-- Providers Section -->
-        <section style="background: linear-gradient(180deg, transparent 0%, rgba(0,245,255,0.02) 50%, transparent 100%);">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">Supported Providers</div>
-                    <h2 class="section-title">Select Your <span class="glow-text">Provider</span></h2>
-                    <p class="section-subtitle">We assist with cancellations for major internet and cable TV providers across the United States</p>
-                </div>
-                <div class="provider-grid">
-                    <a href="cancel-verizon.html" class="provider-card verizon">
-                        <div class="provider-logo">
-                            <svg viewBox="0 0 60 60" width="60" height="60"><text x="50%" y="55%" text-anchor="middle" font-size="24" font-weight="bold" fill="#cd040b">V</text></svg>
-                        </div>
-                        <h3>Verizon</h3>
-                        <p>Fios Internet & TV</p>
-                        <div class="provider-action">Cancel Verizon →</div>
-                    </a>
-                    <a href="cancel-spectrum.html" class="provider-card spectrum">
-                        <div class="provider-logo">
-                            <svg viewBox="0 0 60 60" width="60" height="60"><text x="50%" y="55%" text-anchor="middle" font-size="24" font-weight="bold" fill="#0066cc">S</text></svg>
-                        </div>
-                        <h3>Spectrum</h3>
-                        <p>Internet & Cable TV</p>
-                        <div class="provider-action">Cancel Spectrum →</div>
-                    </a>
-                    <a href="cancel-optimum.html" class="provider-card optimum">
-                        <div class="provider-logo">
-                            <svg viewBox="0 0 60 60" width="60" height="60"><text x="50%" y="55%" text-anchor="middle" font-size="24" font-weight="bold" fill="#f5a623">O</text></svg>
-                        </div>
-                        <h3>Optimum</h3>
-                        <p>Internet & Cable TV</p>
-                        <div class="provider-action">Cancel Optimum →</div>
-                    </a>
-                    <a href="cancel-att.html" class="provider-card att">
-                        <div class="provider-logo">
-                            <svg viewBox="0 0 60 60" width="60" height="60"><text x="50%" y="55%" text-anchor="middle" font-size="14" font-weight="bold" fill="#00a8e0">AT&T</text></svg>
-                        </div>
-                        <h3>AT&T</h3>
-                        <p>Internet & U-verse TV</p>
-                        <div class="provider-action">Cancel AT&T →</div>
-                    </a>
                 </div>
             </div>
         </section>
 
         <!-- How It Works -->
-        <section>
+        <section class="how-it-works" id="how-it-works">
             <div class="container">
                 <div class="section-header">
                     <div class="section-badge">Simple Process</div>
-                    <h2 class="section-title">How It <span class="glow-text">Works</span></h2>
-                    <p class="section-subtitle">Three simple steps to get phone-based cancellation assistance</p>
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-subtitle">Four easy steps to cancel your service hassle-free</p>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
-                    <div class="card" style="text-align: center;">
-                        <div style="font-size: 64px; margin-bottom: 24px; opacity: 0.3; font-family: 'Space Grotesk', sans-serif; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">01</div>
-                        <h3 style="font-size: 24px; margin-bottom: 16px;">Choose Your Provider</h3>
-                        <p style="color: var(--text-secondary);">Select the internet or cable TV provider you want to cancel and review our transparent pricing.</p>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📝</div>
+                        <h3>Submit Your Request</h3>
+                        <p>Fill out our simple form with your provider details and account information.</p>
                     </div>
-                    <div class="card" style="text-align: center;">
-                        <div style="font-size: 64px; margin-bottom: 24px; opacity: 0.3; font-family: 'Space Grotesk', sans-serif; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">02</div>
-                        <h3 style="font-size: 24px; margin-bottom: 16px;">Call Our Support</h3>
-                        <p style="color: var(--text-secondary);">Speak with our team who will guide you and help prepare your account information and talking points.</p>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">📞</div>
+                        <h3>We Contact Your ISP</h3>
+                        <p>Our team guides you through contacting your provider with scripts and talking points.</p>
                     </div>
-                    <div class="card" style="text-align: center;">
-                        <div style="font-size: 64px; margin-bottom: 24px; opacity: 0.3; font-family: 'Space Grotesk', sans-serif; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">03</div>
-                        <h3 style="font-size: 24px; margin-bottom: 16px;">Complete Cancellation</h3>
-                        <p style="color: var(--text-secondary);">We'll assist you through the call with scripts and a checklist to confirm all steps are completed.</p>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">✅</div>
+                        <h3>Confirm Details</h3>
+                        <p>We help you verify cancellation, equipment returns, and final billing.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">🎉</div>
+                        <h3>You're Free!</h3>
+                        <p>Your service is cancelled. Enjoy freedom from your old provider.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing -->
-        <section style="background: linear-gradient(180deg, transparent 0%, rgba(191,90,242,0.03) 50%, transparent 100%);">
+        <!-- Providers -->
+        <section class="providers" id="providers">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-badge">Transparent</div>
-                    <h2 class="section-title">Simple <span class="glow-text">Pricing</span></h2>
-                    <p class="section-subtitle">No hidden fees. Know exactly what you'll pay before you start.</p>
+                    <div class="section-badge">Supported Providers</div>
+                    <h2 class="section-title">We Help Cancel These Providers</h2>
+                    <p class="section-subtitle">Click any logo to learn more about our cancellation assistance</p>
+                </div>
+                <div class="providers-grid">
+                    <div class="provider-logo" data-provider="verizon" onclick="showProviderPopup('verizon')">
+                        <span style="font-size: 24px; font-weight: 800; color: #cd040b;">verizon</span>
+                    </div>
+                    <div class="provider-logo" data-provider="spectrum" onclick="showProviderPopup('spectrum')">
+                        <span style="font-size: 24px; font-weight: 800; color: #0066cc;">spectrum</span>
+                    </div>
+                    <div class="provider-logo" data-provider="xfinity" onclick="showProviderPopup('xfinity')">
+                        <span style="font-size: 24px; font-weight: 800; color: #e31937;">xfinity</span>
+                    </div>
+                    <div class="provider-logo" data-provider="att" onclick="showProviderPopup('att')">
+                        <span style="font-size: 24px; font-weight: 800; color: #00a8e0;">AT&T</span>
+                    </div>
+                    <div class="provider-logo" data-provider="optimum" onclick="showProviderPopup('optimum')">
+                        <span style="font-size: 24px; font-weight: 800; color: #f5a623;">optimum</span>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 24px; color: var(--gray-500); font-size: 14px;">
+                    ⓘ We are an independent third-party service, not affiliated with any provider listed.
+                </p>
+            </div>
+        </section>
+
+        <!-- Success Counter -->
+        <section class="success-counter">
+            <div class="container">
+                <div class="counter-value" data-count="10000">0+</div>
+                <div class="counter-label">Successful Cancellations Completed</div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Customer Reviews</div>
+                    <h2 class="section-title">What Our Customers Say</h2>
+                    <p class="section-subtitle">Real experiences from people we've helped</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"I was dreading the cancellation call, but they walked me through everything. The whole process took less than 30 minutes. So relieved!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SK</div>
+                            <div>
+                                <div class="testimonial-name">Sarah K.</div>
+                                <div class="testimonial-role">Cancelled Spectrum</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Worth every penny. They knew exactly what to say to avoid retention offers and get my cancellation processed quickly. Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MJ</div>
+                            <div>
+                                <div class="testimonial-name">Michael J.</div>
+                                <div class="testimonial-role">Cancelled Verizon</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The checklist they provided was so helpful. I knew exactly what equipment to return and when. No surprise charges on my final bill."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">LP</div>
+                            <div>
+                                <div class="testimonial-name">Lisa P.</div>
+                                <div class="testimonial-role">Cancelled AT&T</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cancellation Form -->
+        <section id="cancellation-form" style="background: var(--white);">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Get Started</div>
+                    <h2 class="section-title">Start Your Cancellation Request</h2>
+                    <p class="section-subtitle">Fill out this form and we'll call you to guide you through the process</p>
+                </div>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <form id="cancellationForm" class="card" style="padding: 40px;">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="provider">Your ISP / Provider *</label>
+                            <select id="provider" name="provider" required>
+                                <option value="">Select your provider...</option>
+                                <option value="verizon">Verizon Fios</option>
+                                <option value="spectrum">Spectrum</option>
+                                <option value="xfinity">Xfinity / Comcast</option>
+                                <option value="att">AT&T</option>
+                                <option value="optimum">Optimum</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service to Cancel</label>
+                            <select id="service" name="service">
+                                <option value="internet">Internet Only</option>
+                                <option value="tv">Cable TV Only</option>
+                                <option value="bundle">Internet + TV Bundle</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Additional Details</label>
+                            <textarea id="details" name="details" placeholder="Any specific concerns or questions?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg btn-block">
+                            Submit Cancellation Request →
+                        </button>
+                        <p style="text-align: center; margin-top: 16px; font-size: 14px; color: var(--gray-500);">
+                            We'll call you within 24 hours during business hours.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Preview -->
+        <section class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Transparent Pricing</div>
+                    <h2 class="section-title">Simple, Honest Pricing</h2>
+                    <p class="section-subtitle">No hidden fees. Know exactly what you'll pay.</p>
                 </div>
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <h3>Internet Only</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">29</span>
-                            <span class="cents">.99</span>
+                        <h3>Single Service</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span><span class="amount">29</span><span style="font-size: 24px; color: var(--gray-500);">.99</span>
                         </div>
-                        <p>Cancellation assistance for internet service</p>
+                        <p>Internet OR Cable TV</p>
                         <ul class="pricing-features">
                             <li>Full consultation call</li>
                             <li>Preparation guidance</li>
                             <li>Scripts & checklists</li>
                             <li>Email follow-up</li>
                         </ul>
-                        <a href="tel:+18885240250" class="btn btn-outline btn-block">Get Started</a>
+                        <a href="#cancellation-form" class="btn btn-outline btn-block">Get Started</a>
                     </div>
                     <div class="pricing-card featured">
-                        <div class="pricing-badge">Most Popular</div>
                         <h3>Bundle Deal</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">39</span>
-                            <span class="cents">.99</span>
+                        <div class="pricing-price">
+                            <span class="currency">$</span><span class="amount">39</span><span style="font-size: 24px; color: var(--gray-500);">.99</span>
                         </div>
-                        <p>Internet AND cable TV cancellation</p>
+                        <p>Internet + Cable TV</p>
                         <ul class="pricing-features">
-                            <li>Everything in single service</li>
+                            <li>Everything in Single Service</li>
                             <li>Handle both at once</li>
                             <li>Save $20 vs separate</li>
                             <li>Priority support</li>
                         </ul>
-                        <a href="tel:+18885240250" class="btn btn-primary btn-block">Get Started</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Cable TV Only</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">29</span>
-                            <span class="cents">.99</span>
-                        </div>
-                        <p>Cancellation assistance for cable TV</p>
-                        <ul class="pricing-features">
-                            <li>Full consultation call</li>
-                            <li>Preparation guidance</li>
-                            <li>Scripts & checklists</li>
-                            <li>Email follow-up</li>
-                        </ul>
-                        <a href="tel:+18885240250" class="btn btn-outline btn-block">Get Started</a>
+                        <a href="#cancellation-form" class="btn btn-primary btn-block">Get Started</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section>
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">Questions</div>
-                    <h2 class="section-title">Frequently <span class="glow-text">Asked</span></h2>
-                </div>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Is CancelMyInternet.com affiliated with any provider?</span>
-                            <div class="faq-icon"><span>+</span></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p><strong>No.</strong> We are an independent third-party service. Not affiliated with, endorsed by, or associated with Verizon, Spectrum, Optimum, AT&T, or any other provider.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>What does your service include?</span>
-                            <div class="faq-icon"><span>+</span></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Phone-based guidance through the cancellation process, help preparing what to say, understanding provider policies, and a confirmation checklist for equipment returns and final bills.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Can you guarantee cancellation?</span>
-                            <div class="faq-icon"><span>+</span></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We cannot guarantee outcomes as final decisions rest with your provider based on your account status and contract terms. We provide expert assistance to help you through the process.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>What is your refund policy?</span>
-                            <div class="faq-icon"><span>+</span></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>If we're unable to provide the consultation service as described, you may be eligible for a refund. See our <a href="pricing.html#refunds">full refund policy</a> for complete details.</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 48px;">
-                    <a href="faq.html" class="btn btn-outline">View All FAQs →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Trust -->
-        <section style="background: linear-gradient(180deg, transparent 0%, rgba(0,245,255,0.03) 50%, transparent 100%);">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">Why Choose Us</div>
-                    <h2 class="section-title">Trust & <span class="glow-text">Safety</span></h2>
-                </div>
-                <div class="trust-grid">
-                    <div class="trust-card">
-                        <div class="trust-icon">🔒</div>
-                        <h3>Privacy Protected</h3>
-                        <p>Your information is secure and never sold to third parties.</p>
-                    </div>
-                    <div class="trust-card">
-                        <div class="trust-icon">📋</div>
-                        <h3>Clear Terms</h3>
-                        <p>No fine print. Plain language policies you can understand.</p>
-                    </div>
-                    <div class="trust-card">
-                        <div class="trust-icon">🛡️</div>
-                        <h3>Independent</h3>
-                        <p>No provider affiliations. We work exclusively for you.</p>
-                    </div>
-                    <div class="trust-card">
-                        <div class="trust-icon">💬</div>
-                        <h3>Real Support</h3>
-                        <p>Actual humans ready to help during business hours.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
+        <!-- CTA Section -->
         <section class="cta-section">
             <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Cancel Your Service?</h2>
-                    <p>Get phone-based assistance from our independent team. Clear pricing, no hidden fees.</p>
-                    <a href="tel:+18885240250" class="btn btn-primary btn-lg">📞 Call Now For Assistance</a>
-                    <div class="cta-phone">(888) 524-0250</div>
-                    <p style="margin-top: 24px; font-size: 14px; color: var(--text-muted);">Independent third-party service. Not affiliated with any provider.</p>
-                </div>
+                <h2>Ready to Cancel Your Service?</h2>
+                <p>Get expert phone assistance from our independent team. No hassle, no stress.</p>
+                <a href="tel:+18885240250" class="btn btn-lg">📞 Call Now: (888) 524-0250</a>
+                <div class="cta-phone">Or fill out the form above</div>
             </div>
         </section>
     </main>
@@ -367,16 +336,15 @@
                         <div class="logo-icon">✕</div>
                         <span class="logo-text">Cancel<span>My</span>Internet</span>
                     </a>
-                    <p>Independent third-party phone assistance for canceling internet and cable TV services in the United States.</p>
+                    <p>Independent third-party phone assistance for canceling internet and cable TV services. We are NOT affiliated with any provider.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -395,7 +363,6 @@
                         <li><a href="disclaimer.html">Disclaimer</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="sitemap.html">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -405,6 +372,65 @@
             </div>
         </div>
     </footer>
+
+    <!-- Provider Popup - Enhanced with Brand Logos -->
+    <div class="popup-overlay" id="providerPopup">
+        <div class="popup" id="popupContent">
+            <div class="popup-header">
+                <div class="popup-particles">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <button class="popup-close" onclick="closePopup()">✕</button>
+                <div class="popup-logo" id="popupLogo">
+                    <!-- Logo inserted by JS -->
+                </div>
+            </div>
+            <div class="popup-content">
+                <div class="popup-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    Authorized Assistance
+                </div>
+                <h2 id="popupTitle">Cancel Your Service</h2>
+                <p class="popup-subtitle" id="popupSubtitle">Get expert phone guidance for your cancellation. We'll help you navigate the entire process stress-free.</p>
+                <a href="tel:+18885240250" class="popup-cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    Call (888) 524-0250
+                </a>
+                <div class="popup-urgency">
+                    <span class="popup-urgency-dot"></span>
+                    <span>Agents available now</span>
+                </div>
+                <p class="popup-footer">Mon-Fri 9AM-6PM EST • Independent Third-Party Service</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <button class="floating-btn" aria-label="Contact us">💬</button>
+        <div class="floating-form">
+            <h4>Quick Contact</h4>
+            <form>
+                <div class="form-group">
+                    <label for="quick-name">Name</label>
+                    <input type="text" id="quick-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-email">Email</label>
+                    <input type="email" id="quick-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Message</label>
+                    <textarea id="quick-message" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

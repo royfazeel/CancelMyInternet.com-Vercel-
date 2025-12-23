@@ -316,10 +316,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile Menu (placeholder for future implementation)
     const mobileToggle = document.querySelector('.mobile-toggle');
-    if (mobileToggle) {
+    const mobileNav = document.querySelector('.mobile-nav');
+    
+    if (mobileToggle && mobileNav) {
         mobileToggle.addEventListener('click', () => {
-            // Add mobile menu functionality here
-            console.log('Mobile menu clicked');
+            mobileToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking a link
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileToggle.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 
