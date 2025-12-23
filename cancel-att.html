@@ -60,7 +60,6 @@
                 <div class="popup-particles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                 <div class="popup-header-logo">AT&T</div>
             </div>
-            <button class="popup-close" id="popupClose"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <div class="popup-content">
                 <div class="popup-badge"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Authorized Retailer</div>
                 <h2 class="popup-title">Connect with Your<br><span>AT&T Specialist</span> Now!</h2>
@@ -71,6 +70,7 @@
         </div>
     </div>
     <header class="header"><div class="container"><div class="header-inner"><a href="index.html" class="logo"><div class="logo-icon">✕</div><span class="logo-text">Cancel<span>My</span>Internet</span></a><nav class="nav"><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><a href="tel:+18885240250" class="header-cta">📞 (888) 524-0250</a><button class="mobile-toggle"><span></span><span></span><span></span></button></div></div></header>
+    <nav class="mobile-nav"><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="tel:+18885240250" class="mobile-cta">📞 (888) 524-0250</a></nav>
     <main>
         <section class="page-header"><div class="container"><div class="section-badge">AT&T</div><h1>Cancel <span class="glow-text">AT&T</span></h1><p>Phone assistance for canceling AT&T Internet & U-verse TV</p></div></section>
         <section><div class="container"><div class="content">
@@ -88,10 +88,34 @@
     <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="logo"><div class="logo-icon">✕</div><span class="logo-text">Cancel<span>My</span>Internet</span></a><p>Independent third-party phone assistance.</p></div><div class="footer-links"><h4>Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div><div class="footer-links"><h4>Providers</h4><ul><li><a href="cancel-verizon.html">Verizon</a></li><li><a href="cancel-spectrum.html">Spectrum</a></li><li><a href="cancel-optimum.html">Optimum</a></li><li><a href="cancel-att.html">AT&T</a></li></ul></div><div class="footer-links"><h4>Legal</h4><ul><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 CancelMyInternet.com</p><p>ⓘ Not affiliated with any provider.</p></div></div></footer>
     <script src="script.js"></script>
     <script>
-        setTimeout(() => { document.getElementById('popupOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }, 1500);
-        document.getElementById('popupClose').onclick = () => { document.getElementById('popupOverlay').classList.remove('active'); document.body.style.overflow = ''; };
-        document.getElementById('popupOverlay').onclick = (e) => { if(e.target === e.currentTarget) { e.currentTarget.classList.remove('active'); document.body.style.overflow = ''; }};
-        document.onkeydown = (e) => { if(e.key === 'Escape') { document.getElementById('popupOverlay').classList.remove('active'); document.body.style.overflow = ''; }};
+        function showPopup() {
+            document.getElementById('popupOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hidePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            // Reappear after 4 seconds
+            setTimeout(showPopup, 4000);
+        }
+        
+        // Show popup initially after 1.5 seconds
+        setTimeout(showPopup, 1500);
+        
+        // Close popup when clicking overlay background (not the popup itself)
+        document.getElementById('popupOverlay').onclick = (e) => {
+            if (e.target === e.currentTarget) {
+                hidePopup();
+            }
+        };
+        
+        // Close popup on Escape key
+        document.onkeydown = (e) => {
+            if (e.key === 'Escape') {
+                hidePopup();
+            }
+        };
     </script>
 </body>
 </html>

@@ -347,6 +347,7 @@ a:hover {
     border: none;
     cursor: pointer;
     padding: 8px;
+    z-index: 1001;
 }
 
 @media (min-width: 1024px) {
@@ -359,6 +360,99 @@ a:hover {
     background: var(--gradient-main);
     border-radius: 2px;
     transition: all 0.3s;
+    transform-origin: center;
+}
+
+.mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(5,5,8,0.98);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 100px 32px 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav a {
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 16px 0;
+    text-align: center;
+    transition: all 0.3s;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.mobile-nav.open a {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav.open a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav.open a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav.open a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav.open a:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav.open a:nth-child(5) { transition-delay: 0.3s; }
+.mobile-nav.open a:nth-child(6) { transition-delay: 0.35s; }
+.mobile-nav.open a:nth-child(7) { transition-delay: 0.4s; }
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    color: var(--neon-cyan);
+    text-shadow: var(--glow-cyan);
+}
+
+.mobile-nav .mobile-cta {
+    margin-top: 24px;
+    padding: 18px 40px;
+    background: var(--gradient-main);
+    color: var(--bg-dark);
+    border-radius: 100px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.mobile-nav .mobile-cta:hover {
+    color: var(--bg-dark);
+    transform: scale(1.05);
+}
+
+/* Hide header CTA on small screens */
+@media (max-width: 768px) {
+    .header-cta {
+        display: none;
+    }
 }
 
 /* Buttons */
