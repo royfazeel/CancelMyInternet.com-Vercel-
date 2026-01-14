@@ -1,4 +1,21 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/google93RB7IwpJnzwcRJmqVpHGkcvKGydJn6SM3_uSiPwofE.html",
+      "destination": "/google93RB7IwpJnzwcRJmqVpHGkcvKGydJn6SM3_uSiPwofE.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/google93RB7IwpJnzwcRJmqVpHGkcvKGydJn6SM3_uSiPwofE.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html"
+        }
+      ]
+    }
+  ]
 }
